@@ -10,6 +10,10 @@ package greetings; // must be at the top!
 //import java.lang.*;
 // static imports can shorten uses of static features of some
 // element of an api
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import static java.lang.System.out;
 //import static java.lang.System.*;
 
@@ -18,7 +22,7 @@ public class HelloJavaWorld {
   // "real code" MUST be INSIDE a type (class in this case)
 
   // entry point to a Java program is the "main" method
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     // String/text literals are DOUBLE quotes ONLY
     // single quotes make single "char" values
 //    java.lang.System.out.println("Hello Java World!");
@@ -47,8 +51,40 @@ public class HelloJavaWorld {
     // comparisons > < >= <= != ==
     // NEED TO TALK ABOUT EQUALITY
 
+    double num = Math.random();
+    if (num > 0.5) {
+      out.println("it's a big number");
+    } else if (num > 0.2) {
+      out.println("it's not so big...");
+    } else {
+      out.println("pretty darn small...");
+    }
+// Reader and Writer types work with characters (16 bit)
+// InputStream and OutputStream work with bytes
+// InputStreamReader can convert from explicit "charsets"
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    String line = br.readLine();
+    // anything can be auto-converted to text when concatenated
+    // with another string
+    // string concat with plus is the only operator "overloading"
+    // java really offers
+    out.println("You entered " + line);
+
+    // convert text to number using "wrapper" types for the primitives
+    // Boolean, Byte, Character, Short, Integer, Float, Double
+    int valueRead = Integer.parseInt(line);
+    if (valueRead > 5) {
+      out.println("That's more than 5");
+    } else if (valueRead == 5) {
+      out.println("Jackpot, that's a five!!!");
+    } else {
+      out.println("too small");
+    }
+
   }
 }
 
 // "default" access means "in the same package"
-class Other {}
+class Other {
+}
